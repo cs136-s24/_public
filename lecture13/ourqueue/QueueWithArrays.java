@@ -67,12 +67,9 @@ public class QueueWithArrays<Item> implements Queue<Item>{
         	return null; 
         } 
         Item item = q[first];
-        q[first] = null;                            // to avoid loitering
+        q[first] = null;                            
         n--;
         first++;
-        if (first == q.length){
-        	first = 0;           // wrap-around
-        }
         return item;
     }
 
