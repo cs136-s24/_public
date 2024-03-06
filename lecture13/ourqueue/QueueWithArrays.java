@@ -53,7 +53,6 @@ public class QueueWithArrays<Item> implements Queue<Item>{
 		resize(2*q.length);   // double size of array if necessary
 	}
         q[last++] = item;                        // add item
-        if (last == q.length) last = 0;          // wrap-around
         n++;
     }
 
