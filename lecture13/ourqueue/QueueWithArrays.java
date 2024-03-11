@@ -2,8 +2,8 @@ package ourqueue;
 
 public class QueueWithArrays<Item> implements Queue<Item>{
 
-	private static final int INIT_CAPACITY = 8;
-	private Item[] q;       // queue elements
+    private static final int INIT_CAPACITY = 8;
+    private Item[] q;       // queue elements
     private int n;          // number of elements on queue
     private int first;      // index of first element of queue
     private int last;       // index of next available slot
@@ -31,7 +31,7 @@ public class QueueWithArrays<Item> implements Queue<Item>{
         return n;
     }
 
-  	// resize the underlying array
+    // resize the underlying array
     private void resize(int capacity) {
         assert capacity >= n;
         Item[] copy = (Item[]) new Object[capacity];
@@ -49,9 +49,10 @@ public class QueueWithArrays<Item> implements Queue<Item>{
      */
     public void enqueue(Item item) {
         // double size of array if necessary and recopy to front of array
-        if (n == q.length) resize(2*q.length);   // double size of array if necessary
+        if (n == q.length){
+		resize(2*q.length);   // double size of array if necessary
+	}
         q[last++] = item;                        // add item
-        if (last == q.length) last = 0;          // wrap-around
         n++;
     }
 
@@ -65,12 +66,9 @@ public class QueueWithArrays<Item> implements Queue<Item>{
         	return null; 
         } 
         Item item = q[first];
-        q[first] = null;                            // to avoid loitering
+        q[first] = null;                            
         n--;
         first++;
-        if (first == q.length){
-        	first = 0;           // wrap-around
-        }
         return item;
     }
 
